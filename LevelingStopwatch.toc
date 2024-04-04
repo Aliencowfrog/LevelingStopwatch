@@ -1,0 +1,5 @@
+﻿## Interface: 11200
+## Title: LevelingStopwatch
+## Notes: Track your progress by logging /played times per level
+## SavedVariablesPerCharacter: LevelingStopwatch
+LevelingStopwatch.lua
