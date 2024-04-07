@@ -40,7 +40,7 @@ Custom format string
 
 ### Installation
 
-Simply copy the files into the properly named folder in your World of Warcraft directory:
+Like most other addons, too, simply copy the files into the properly named folder in your World of Warcraft addons directory:
 
     ├── Interface
     │   └── AddOns
@@ -65,7 +65,7 @@ Warning: This resets *all* addon data, including saved timestamps for this chara
 
 ### Move position
 
-You can move the overlay position by adjusting `frameAnchor` as well as `frameOffsetX` and `frameOffsetY`. For example, to move the frame by 100 pixels to the right and 200 pixels to the bottom (or -200 pixels to the top), relative to the top left corner of the screen:
+You can move the overlay position by adjusting `frameAnchor` as well as `frameOffsetX` and `frameOffsetY`. For example, to move the frame by 100 pixels to the right and 200 pixels to the bottom (which is like moving it -200 pixels to the top), relative to the top left corner of the screen:
 
     /run LevelingStopwatch.frameAnchor="TOPLEFT" LevelingStopwatch.frameOffsetX=100 LevelingStopwatch.frameOffsetY=-200 ReloadUI()
 
@@ -259,11 +259,15 @@ Number of overlay refreshs per second.
 
 Default value: `{}`
 
-Saving completion timestamps for each level. Each key-value pair represents the level and respective total time in seconds. Usually, there is no need to modify this setting, but you can use it to manually set level timestamps if you previously recorded them elsewhere.
+Contains the completion timestamps for each level. Each key-value pair represents the level and respective total time in seconds. Usually, there is no need to modify this setting, but you can use it to manually set level timestamps if you previously recorded them elsewhere.
 
 For example, to set the timestamp for the completion of level 20 to 123456 seconds of total playing time:
 
     /run LevelingStopwatch.levels[20]=123456 ReloadUI()
+
+To print all saved timestamps:
+
+    /run local function p(t)DEFAULT_CHAT_FRAME:AddMessage(t)end p("LevelingStopwatch saved timestamps:")for i=1,59 do local s=LevelingStopwatch.levels[i]if s~=nil then p("Level "..i.." completed at total playing time of "..s.." seconds")end end
 
 ### `characterName`
 
