@@ -259,6 +259,14 @@ Possible values: any positive number
 
 Number of overlay refreshs per second.
 
+### `celebrate`
+
+Default value: `true`
+
+Possible values: `true`, `false`
+
+Enable level 60 celebrations.
+
 ### `levels`
 
 Default value: `{}`

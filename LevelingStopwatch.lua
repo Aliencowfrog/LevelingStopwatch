@@ -210,6 +210,21 @@ frame:SetScript("OnUpdate", function()
             textColumns[i]:SetText(table.concat(reverse(lines), "\n"))
         end
     end
+    if currentLevel == 60 and settings.celebrate then
+        for columnIndex = 1, 3 do
+            local oldString = textColumns[columnIndex]:GetText() or ""
+            local newString = ""
+            for charPos = 1, string.len(oldString) do
+                local color = ""
+                for i = 1, 6 do
+                    color = color .. string.format("%x", math.random(0, 15))
+                end
+                newString = newString .. "\124cff" .. color .. string.sub(oldString, charPos, charPos)
+            end
+            newString = newString .. "\124r"
+            textColumns[columnIndex]:SetText(newString)
+        end
+    end
 end)
 
 -- Receiving RequestTimePlayed() information from server, which is
@@ -282,6 +297,7 @@ function events.ADDON_LOADED()
     defaultSettings.reverseOrder = false
     defaultSettings.refreshFrequency = 1
     defaultSettings.levels = {}
+    defaultSettings.celebrate = true
     for key, value in defaultSettings do
         if settings[key] == nil then
             settings[key] = value
