@@ -57,11 +57,15 @@ Leveling timestamps and all other addon settings are stored on a per-character b
 
 ### Reset addon
 
-To reset the addon settings to default values:
+To reset addon data:
 
     /run LevelingStopwatch=nil ReloadUI()
 
 Warning: This resets *all* addon data, including saved timestamps for this character!
+
+If you made a mistake while adjusting the overlay, and now it's hidden or something else went wrong, you might want to simply reset addon settings (*only* settings) to default values while preserving saved leveling timestamps:
+
+    /run local s=LevelingStopwatch.levels LevelingStopwatch={levels=s} ReloadUI()
 
 ### Move position
 
@@ -267,7 +271,7 @@ For example, to set the timestamp for the completion of level 20 to 123456 secon
 
 To print all saved timestamps:
 
-    /run local function p(t)DEFAULT_CHAT_FRAME:AddMessage(t)end p("LevelingStopwatch saved timestamps:")for i=1,59 do local s=LevelingStopwatch.levels[i]if s~=nil then p("Level "..i.." completed at total playing time of "..s.." seconds")end end
+    /run local function p(t)DEFAULT_CHAT_FRAME:AddMessage(t)end p("Total game time in seconds when level completed:")for i=1,59 do local s=LevelingStopwatch.levels[i]if s~=nil then p("LevelingStopwatch.levels["..i.."]="..s)end end
 
 ### `characterName`
 
